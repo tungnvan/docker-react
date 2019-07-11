@@ -3,7 +3,7 @@ FROM node:10.15-alpine as builder
 WORKDIR /frontend
 COPY ./package.json ./
 RUN npm install
-COPY . .
+COPY ./ ./
 RUN npm run build
 
 # Run phase
