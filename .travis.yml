@@ -5,3 +5,14 @@ before_install:
   - docker build -f Dockerfile.dev -t tungnvan/docker-react .
 script:
   - docker run -e CI=true tungnvan/docker-react npm run test
+deploy:
+  - provider: codedeploy
+    revision_type: github
+    access_key_id: AKIA2WJVPM5QLLP276IK
+    secret_access_key:
+      secure: TxPIrNDXycwf7xCy93KH+tufFPdU4EbYIXGS3y4wuLathglBoK4F+tEJ7t+j5iykAfuCL9kXh8ITuNuP3uRl7QI3MbL4Zv9jQ6oJlOiHoyrVNlND3gNYRdQ0fisRSDyDPT3ADpMKaTGmVmM0R+kucH2Je2PD+8oljFyHQYVsQobbFHTUjxzITbxJ6chr1q11avsf+yNRb5RbpNxglDjGPfgeJXvz+PGREQ/s85cA1WdexNQk2kPoECX7fOBmrOA6ffyhPJfIOWQNFu12VWM/a6aUsPtUlCHWdOSAxa1xY81pUupmkAMAZG8A+jo285vgPkCnW6JfVQm4lUbfvzw3JWAquUtv+AbQGq3ZBv2L7nj9CwY2nNqT7nxcyraMk83I7TiXamIVsw4/RorbOkZC1zzWvB9Oex4F/ums3y3fwW6qpR2lXyIdL6RsBbOfKKTmBpHi71GcywoeA++n1thmjpEm8CRL2mqqkJkBdm83LIJUe8HVyVr/BOxwvzKnMcSH58UXBrd0nwtpxo6wZzvLFjcvIgMUjl30N7SNHh0hEF5iphpKouP2fIqsxk6sACzwFXeQutBa4Ctr4kyOckqu4eJpft5k4497Jsz7h7+PxIyhFgLUnyccdEYTmN41fmjdxwwHtKio5b6rrAePRQTyVVDlW22YiLSdncb8MfWfgXU=
+    application: "tungnvan-docker-react"
+    deployment_group: "tungnvan-deployment-group"
+    region: "ap-southeast-1"
+    on:
+      branch: master
