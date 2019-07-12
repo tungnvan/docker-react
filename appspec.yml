@@ -78,13 +78,13 @@ hooks:
 #   in the script specified in "location" starting from the root of the 
 #   revision's file bundle.
   ApplicationStop:
-    - location: "docker container stop tungnvan-docker-react"
+    - location: scripts/stop.sh
       timeout: 600
       runas: ubuntu
 # During the BeforeInstall deployment lifecycle event, run the commands 
 #   in the script specified in "location".
   BeforeInstall:
-    - location: "docker build -t tungnvan-docker-react ."
+    - location: scripts/build.sh
       timeout: 600
       runas: ubuntu
 # During the AfterInstall deployment lifecycle event, run the commands 
@@ -96,10 +96,7 @@ hooks:
 # During the ApplicationStart deployment lifecycle event, run the commands 
 #   in the script specified in "location".
   ApplicationStart:
-    - location: "docker container rm -f tungnvan-docker-react"
-      timeout: 600
-      runas: ubuntu
-    - location: "docker run -p 80:80 --name tungnvan-docker-react tungnvan-docker-react"
+    - location: scripts/start.sh
       timeout: 600
       runas: ubuntu
 # During the ValidateService deployment lifecycle event, run the commands 
