@@ -84,7 +84,7 @@ hooks:
 # During the BeforeInstall deployment lifecycle event, run the commands 
 #   in the script specified in "location".
   BeforeInstall:
-    - location: scripts/build.sh
+    - location: scripts/pre-start.sh
       timeout: 120
       runas: ubuntu
 # During the AfterInstall deployment lifecycle event, run the commands 
