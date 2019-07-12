@@ -77,10 +77,10 @@ hooks:
 # During the ApplicationStop deployment lifecycle event, run the commands 
 #   in the script specified in "location" starting from the root of the 
 #   revision's file bundle.
-  # ApplicationStop:
-  #   - location: scripts/stop.sh
-  #     timeout: 120
-  #     runas: ubuntu
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 120
+      runas: ubuntu
 # During the BeforeInstall deployment lifecycle event, run the commands 
 #   in the script specified in "location".
   BeforeInstall:
